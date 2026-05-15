@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  code-server:
+    image: codercom/code-server:latest
+    container_name: my-cloud-ide
+    ports:
+      - "8080:8080"
+    environment:
+      - PASSWORD=Pass1234!
+    volumes:
+      - code-server-data:/home/coder/workspace
+    command: --bind-addr 0.0.0.0:8080 --auth password
+    restart: always
+
+volumes:
+  code-server-data:
